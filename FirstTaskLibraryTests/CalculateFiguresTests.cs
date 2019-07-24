@@ -10,10 +10,10 @@ namespace FirstTaskLibraryTests
     [TestClass]
     public class CalculateFiguresTests
     {
+        double delta = 0.001;
         [TestMethod]
         public void Total_Perimeter_Test_Method()
         {
-
             List<Figure> figures = new List<Figure>()
             {
                 new Rectangle(width: 3, height: 5), // P = 2 * (a + b) 
@@ -25,7 +25,7 @@ namespace FirstTaskLibraryTests
             double expected = 142;
 
             double actual = figures.Sum(item => item.Perimeter());
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, actual, delta);
         }
 
         [TestMethod]
@@ -43,7 +43,7 @@ namespace FirstTaskLibraryTests
             double expected = 371;
 
             double actual = figures.Sum(item => item.Area());
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, actual, delta);
         }
     }
 }
