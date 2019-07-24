@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FirstTaskLibrary.Figures
+namespace FirstTaskLibrary
 {
     public class Triangle : Figure
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FirstTaskLibrary.Figures
+namespace FirstTaskLibrary
 {
     public class Trapezium : Figure
     {
@@ -26,7 +26,7 @@ namespace FirstTaskLibrary.Figures
 
         public override double Area()
         {
-            return 0.5 * (SideB * SideD) * Height;
+            return 0.5 * (SideB + SideD) * Height;
         }
 
         public override double Perimeter()
