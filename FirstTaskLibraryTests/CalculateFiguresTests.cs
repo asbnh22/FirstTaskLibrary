@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 
 using FirstTaskLibrary;
 
@@ -12,20 +13,18 @@ namespace FirstTaskLibraryTests
         [TestMethod]
         public void Total_Perimeter_Test_Method()
         {
+
             List<Figure> figures = new List<Figure>()
             {
-                new Rectangle(3,5), // P = 2 * (a + b) 
-                new Circle(7/Math.PI), // P = 2 * PI * r
-                new Square(11), // P = 2 * (a + a)
-                new Triangle(3,4,5), // P = a + b + c
-                new Trapezium(13,5,13,25,12) // P = a + b + c + d
+                new Rectangle(width: 3, height: 5), // P = 2 * (a + b) 
+                new Circle(radius: 7/Math.PI), // P = 2 * PI * r
+                new Square(side: 11), // P = 2 * (a + a)
+                new Triangle(sideA: 3, sideB: 4, sideC: 5), // P = a + b + c
+                new Trapezium(sideA: 13, sideB: 5,sideC: 13, sideD: 25, height: 12) // P = a + b + c + d
             };
-
             double expected = 142;
 
-            CalculateFigures cf = new CalculateFigures();
-            double actual = cf.TotalPerimeter(figures);
-
+            double actual = figures.Sum(item => item.Perimeter());
             Assert.AreEqual(expected, actual);
         }
 
@@ -34,18 +33,16 @@ namespace FirstTaskLibraryTests
         {
             List<Figure> figures = new List<Figure>()
             {
-                new Rectangle(3,5), // S = a * b
-                new Circle(7/(Math.Sqrt(Math.PI))), // S = PI * r^2
-                new Square(11), // S = a * a
-                new Triangle(3,4,5), //S = sqrt(p * (p - a) * (p - b) * (p - c)), where p = (a + b + c) / 2
-                new Trapezium(13,5,13,25,12) //S = h * (b + d) / 2 
+                new Rectangle(width: 3, height: 5), // S = a * b
+                new Circle(radius: 7/(Math.Sqrt(Math.PI))), // S = PI * r^2
+                new Square(side: 11), // S = a * a
+                new Triangle(sideA: 3, sideB: 4, sideC: 5), //S = sqrt(p * (p - a) * (p - b) * (p - c)), where p = (a + b + c) / 2
+                new Trapezium(sideA: 13, sideB: 5,sideC: 13, sideD: 25, height: 12) //S = h * (b + d) / 2 
             };
 
             double expected = 371;
 
-            CalculateFigures cf = new CalculateFigures();
-            double actual = (float)cf.TotalArea(figures);
-
+            double actual = figures.Sum(item => item.Area());
             Assert.AreEqual(expected, actual);
         }
     }
